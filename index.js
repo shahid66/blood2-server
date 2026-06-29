@@ -15,7 +15,15 @@ const cors = require('cors');
 const port = process.env.PORT;
 const DB = process.env.AUTH_DB_NAME;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://bloodbondfrontend.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get('/', (req, res) => {
